@@ -12,6 +12,14 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # A non-shallow repository clone is required
+
+    - name: Run PackSquash
+      uses: ComunidadAylas/PackSquash-action@v4
+      with:
+        packsquash_version: latest # Uses the latest PackSquash release supported by the action
+        shader_source_transformation_strategy: keep_as_is
 
     - name: Create ZIP file
       run: |
